@@ -1,11 +1,12 @@
-UNIOESTE – Universidade Estadual do Oeste do Paraná 
+<p><b>UNIOESTE – Universidade Estadual do Oeste do Paraná </p>
 <p>Curso de Ciência da Computação</p>
-Disciplina de Compiladores 
-Prof. Newton Spolaôr
-
+<p>Disciplina de Compiladores</p>
+<p>Prof. Newton Spolaôr</p></b>
 
 Alunos : Giuliano Augusto
          Jorge Augusto
+
+
 
 Implementar um software que simula um compilador capaz de realizar a análise léxica: Ao ser executado, pedir para o usuário digitar ou selecionar o nome do arquivo fonte (Ex: 
 fonte1.txt, fonte2.txt);
