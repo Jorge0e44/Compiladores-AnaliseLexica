@@ -4,25 +4,25 @@ s = input("Enter filename : ")
 f = open(s, 'r')
 text = f.read()
 
-symbols = ['!', '@', '#', '$', '%', '&', '^', '*']
-oparators = ['+', '-', '*', '/', '=', '+=', '-=', '==', '<', '>', '<=', '>=']
+simbolos = ['!', '@', '#', '$', '%', '&', '^', '*']
+oparadores = ['+', '-', '*', '/', '=', '+=', '-=', '==', '<', '>', '<=', '>=']
 
-keywords = ['auto','break', 'case', 'char', 'const', 'continue', 'default', 'do', 
+PalavrasReservadas = ['auto','break', 'case', 'char', 'const', 'continue', 'default', 'do', 
 			'double', 'else', 'enum', 'extern', 'float', 'for', 'goto', 'if', 
 			'int', 'long', 'register', 'return', 'short', 'signed', 'sizeof', 'static', 
 			'struct', 'switch', 'typedef', 'union', 'unsigned', 'void', 'volatile', 'while']
-delimiters = [' ', '	', '.', ',', '\n', ';', '(', ')', '<', '>', '{', '}', '[', ']']
+delimitadores = [' ', '	', '.', ',', '\n', ';', '(', ')', '<', '>', '{', '}', '[', ']']
 
 
-in_keywords = []
-in_spl_symbols = []
-in_oparators = []
-in_delimiters = []
-in_identifiers = []
-in_constants = []
+in_PalavrasReservadas = []
+in_spl_Simbolos= []
+in_oparadores = []
+in_delimitadores = []
+in_identificadores = []
+in_constantes = []
 
 tokens = []
-isStr = False
+isString = False
 isWord = False
 isCmt = 0
 token = ''
@@ -37,22 +37,22 @@ for i in text:
 			isCmt = 0
 	
 	elif i == '"' or i == "'":
-		if isStr:
+		if isString:
 			tokens.append(token)
 			token = ''
-		isStr = not isStr 
+		isString = not isString
 
-	elif isStr:
+	elif isString:
 		token = token+i
     
-	elif i in symbols:
+	elif i in simbolos:
 		tokens.append(i)
            
 	elif i.isalnum() and not isWord:
 		isWord = True
 		token = i
     
-	elif (i in delimiters) or (i in oparators):
+	elif (i in delimitadores) or (i in oparadores):
 		if token:
 			tokens.append(token)
 			token = ''
@@ -65,36 +65,36 @@ for i in text:
 
 
 for token in tokens:
-	if token in symbols:
-		in_spl_symbols.append(token)
+	if token in simbolos:
+		in_spl_Simbolos.append(token)
 
-	elif token in oparators:
-		in_oparators.append(token)
+	elif token in oparadores:
+		in_oparadores.append(token)
 
-	elif token in keywords:
-		in_keywords.append(token)
+	elif token in PalavrasReservadas:
+		in_PalavrasReservadas.append(token)
 				
 	elif re.search("^[_a-zA-Z][_a-zA-Z0-9]*$",token):
-		in_identifiers.append(token)
+		in_identificadores.append(token)
 		
-	elif token in delimiters:
-		in_delimiters.append(token)
+	elif token in delimitadores:
+		in_delimitadores.append(token)
 		
 	else:
-		in_constants.append(token)
+		in_constantes.append(token)
 	
 						
-print("No of tokens = ", len(tokens))   
-print("\nNo. of keywords = ",len(in_keywords))
-print(in_keywords);
-print("\nNo. of special symbols = ",len(in_spl_symbols))
-print(in_spl_symbols);
-print("\nNo. of oparators = ",len(in_oparators))
-print(in_oparators);
-print("\nNo. of identifiers = ",len(in_identifiers))
-print(in_identifiers);
-print("\nNo. of constants = ",len(in_constants))
-print(in_constants);
-print("\nNo. of delimiters = ",len(in_delimiters))
-print(in_delimiters);
+print("NUMERO DE TOKENS  = ", len(tokens))   
+print("\nNUMERO DE PALAVRAS RESERVADAS  = ",len(in_PalavrasReservadas))
+print(in_PalavrasReservadas);
+print("\nNNUMERO DE SIMBOLOS ESPECIAIS = ",len(in_spl_Simbolos))
+print(in_spl_Simbolos);
+print("\nNUMERO DE OPERADORES = ",len(in_oparadores))
+print(in_oparadores);
+print("\nNUMERO DE IDENTIFICADORES  = ",len(in_identificadores))
+print(in_identificadores);
+print("\nNUMERO DE TOKENS  = ",len(in_constantes))
+print(in_constantes);
+print("\nNUMERO DE DELIMITADORES = ",len(in_delimitadores))
+print(in_delimitadores);
 f.close()   
