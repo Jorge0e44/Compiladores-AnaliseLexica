@@ -93,7 +93,7 @@ print("\nNUMERO DE OPERADORES = ",len(in_oparadores))
 print(in_oparadores);
 print("\nNUMERO DE IDENTIFICADORES  = ",len(in_identificadores))
 print(in_identificadores);
-print("\nNUMERO DE TOKENS  = ",len(in_constantes))
+print("\nNUMERO DE CONSTANTES = ",len(in_constantes))
 print(in_constantes);
 print("\nNUMERO DE DELIMITADORES = ",len(in_delimitadores))
 print(in_delimitadores);
