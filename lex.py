@@ -5,7 +5,7 @@ f = open(s, 'r')
 text = f.read()
 
 simbolos = ['!', '@', '#', '$', '%', '&', '^', '*']
-oparadores = ['+', '-', '*', '/', '=', '+=', '-=', '==', '<', '>', '<=', '>=']
+oparadores = ['+', '-', '*', '/', '=', '+=', '-=', '==', '/=', '*=', '<', '>', '<=', '>=']
 
 PalavrasReservadas = ['auto','break', 'case', 'char', 'const', 'continue', 'default', 'do', 
 			'double', 'else', 'enum', 'extern', 'float', 'for', 'goto', 'if', 
