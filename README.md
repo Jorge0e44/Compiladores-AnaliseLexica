@@ -21,9 +21,8 @@ O software deve ser implementado em qualquer linguagem, com ou sem o apoio de fe
 
 
 <b>Software   : Almost a compiler</b>
-
-Integrantes: Jorge Augusto S. Freitas
-	     Giuliano Augusto
+<i>Integrantes: Jorge Augusto S. Freitas
+	     Giuliano Augusto </i>
  
 Descrição  : A linguagem X é um subconjunto da linguagem C
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
@@ -98,16 +97,18 @@ TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identific
 *************************************************************************************************************
 ***************************************   DESCRIÇÃO DO FUNCIONAMENTO  ***************************************
 *************************************************************************************************************
+Documentação Python 3:
+https://docs.python.org/pt-br/3/tutorial/index.html
 
 Com o auxilio do Python 3 ou versões superiores, fazer os seguintes passos:
 EXECUTAR:
-
-// execute o comando a seguir no prompt de comando (CMD) ou Powershell:
+// Execute o comando a seguir no prompt de comando (CMD) ou Powershell na pasta onde contenham os arquivos:
 python lex.py
 
 // se tudo ocorreu bem ele executa direto o programa
 // Será solicitado ao usuário que digite o nome do arquivo a ser analisado
-// É apresentado
+// É apresentado para o usuário os resultados
+
 
 
 
