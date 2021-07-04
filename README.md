@@ -21,8 +21,8 @@ O software deve ser implementado em qualquer linguagem, com ou sem o apoio de fe
 
 
 <b>Software   : Almost a compiler</b>
-<i>Integrantes: Jorge Augusto S. Freitas
-	     Giuliano Augusto </i>
+<p><i>Integrantes: Jorge Augusto S. Freitas
+	     Giuliano Augusto </i></p>
  
 Descrição  : A linguagem X é um subconjunto da linguagem C
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
