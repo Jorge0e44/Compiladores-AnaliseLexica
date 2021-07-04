@@ -1,24 +1,26 @@
 from os import altsep
 import re
+import os
 
 s = input("Enter filename : ")
 f = open(s, 'r')
 text = f.read()
 
 simbolos = ['@', '#', '$', '&', '^']
-operadores_logicos = ['&&','||','!']##AND ORD NOT
-operadores_aritmeticos=['+','-','*','/','%']#VERIFICAR A DIVISÃO PQ TÁ BUGANDO
-operadores_relacionais = [ '+=','!=','-=', '==', '<', '>', '<=', '>=','<>']#VERIFICAR QUANDO O USO FOR DO TIPO <STDIO.H> POIS O <> ELE IDENTIFICA SOMENTE COMO OPERADOR RELACIONAL
+operadores_logicos = ['&&','||','!','^'] # AND OR NOT XOR
+operadores_aritmeticos=['+','-','*','/','%'] # VERIFICAR A DIVISÃO PQ TÁ BUGANDO
+operadores_relacionais = [ '+=','!=','-=', '==', '<', '>', '<=', '>=']
 tipo_variaveis=['int','float','long','double','short','char','long','unsigned']
 simb_atribuicao = ['=']
-loops = ['for','while'] #verificar se o do entra nesse caso
+loops = ['for','while', 'do'] #verificar se o do entra nesse caso
 condicionais = ['if','else']
 digitos = ['0','1','2','3','4','5','6','7','8','9']
-PalavrasReservadas = ['auto','break', 'case', 'const', 'continue', 'default', 'do', 
+PalavrasReservadas = ['auto','break', 'case', 'const', 'continue', 'default', 
 			'enum', 'extern', 'goto','define',
 			  'register', 'return', 'signed', 'sizeof', 'static','include','main'
 			'struct', 'switch', 'typedef', 'union', 'void', 'volatile']
 delimitadores = [' ', '	', '.', ',', '\n', ';', '(', ')', '<', '>', '{', '}', '[', ']']
+#comentarios = ['//','/*','*/']
 
 
 in_PalavrasReservadas = []
@@ -35,7 +37,8 @@ in_digitos = []
 in_delimitadores = []
 in_identificadores = []
 in_entremaiormenor = []
-in_constantes = []
+in_comentarios = []
+#in_constantes = []
 
 tokens = []
 isString = False
@@ -68,7 +71,7 @@ for i in text:
 		isWord = True
 		token = i
     
-	elif (i in delimitadores) or (i in operadores_aritmeticos) or (i in operadores_logicos) or (i in operadores_relacionais) or (i in loops) or (i in condicionais):
+	elif (i in delimitadores) or (i in operadores_aritmeticos) or (i in operadores_logicos) or (i in operadores_relacionais) or (i in loops) or (i in condicionais):# or (i in comentarios):
 		if token:
 			tokens.append(token)
 			token = ''
@@ -79,7 +82,7 @@ for i in text:
 	elif isWord:
 		token = token+i
 
-
+os.system("PAUSE")
 for token in tokens:
 	if token in simbolos:
 		in_spl_Simbolos.append(token)
@@ -111,11 +114,14 @@ for token in tokens:
 		in_PalavrasReservadas.append(token)
 
 	#O USO DO [] CORRESPONDE QUE QUEREMOS PEGAR UM CONJUNTO DE CARACTERES			
-	elif re.search("^[_a-zA-Z][_a-zA-Z]*$",token):  
+	elif re.search("^[_a-zA-Z][_a-zA-Z0-9]*$",token):  
 		in_identificadores.append(token)
 		
 	elif token in delimitadores:
 		in_delimitadores.append(token)
+
+	#elif token in comentarios:
+	#	in_comentarios.append(token)	
 		
 	else:
 		in_constantes.append(token)
@@ -156,13 +162,15 @@ print(in_digitos);
 print("\nNUMERO DE IDENTIFICADROES = ",len(in_identificadores))
 print(in_identificadores);
 
+#esse constantes ta pegando tudo o que resta do código que não foi identificado como token
 print("\nNUMERO DE CONSTANTES = ",len(in_constantes))
 print(in_constantes);
 
-#VERIFICAR COM O GIU SOBRE ESSE CONSTANTES, PQ ME PARECE Q ELE TÁ IMPRIMINDO OUTRAS COISAS
-#print("\nNUMERO DE CONSTANTES = ",len(in_constantes))
-#print(in_constantes);
+#print("\nNUMERO DE COMENTARIOS = ",len(in_delimitadores))
+#print(in_delimitadores);
 
 print("\nNUMERO DE DELIMITADORES = ",len(in_delimitadores))
 print(in_delimitadores);
+os.system("PAUSE");
 f.close()   
+
