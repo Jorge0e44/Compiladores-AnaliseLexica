@@ -140,7 +140,10 @@ for token in tokens:
 	elif token in caracteres_invalidos:
     		in_caracteres_invalidos.append(token)
 
-	#PROCURA O %f EM TOKEN
+    elif re.search("[%][.]?[0-9]*?[f]",tokens):
+    	in_codigos_formato.append(token)
+	
+	'''#PROCURA O %f EM TOKEN
 	#SE ESTIVER CONTIDO, FAZ UMA INCLUSÃO NA LISTA CODIGOS DE FORMATO
 	elif re.findall("^%f",token):
 		in_codigos_formato.append(token)
@@ -156,7 +159,7 @@ for token in tokens:
 	#SE ESTIVER CONTIDO, FAZ UMA INCLUSÃO NA LISTA CODIGOS DE FORMATO
 	elif re.findall("^%s",token):
     		in_codigos_formato.append(token)
-
+'''
 	#VERIFICA SE O CONTEUDO DE TOKEN ESTÁ CONTIDO DENTRO DAS DEFINIÇÕES DA LISTA DE OPERADORES RELACIONAIS
 	#SE ESTIVER CONTIDO, FAZ UMA INCLUSÃO NA LISTA DE OPERADORES RELACIONAIS
 	elif token in operadores_relacionais:
