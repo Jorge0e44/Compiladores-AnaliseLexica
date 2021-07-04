@@ -1,5 +1,6 @@
+#include <stdio.h>
 int main(){
-	int x;
-	x = 1 * 3;
+	int __1a1_1a = 0;
+	printf("%d\n",_1a1_1a);
 	return 0;
 }
