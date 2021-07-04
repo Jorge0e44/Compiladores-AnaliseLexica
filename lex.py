@@ -33,7 +33,7 @@ operadores_aritmeticos=['+','-','*','/','%']
 operadores_relacionais = [ '+=','!=','-=', '==', '<', '>', '<=', '>=']
 
 ##### Lista de Tokens para definição de Tipos de Variáveis #######
-tipo_variaveis=['int','float','long','double','short','char','long','unsigned']
+tipo_variaveis=['int','float','long','double','short','char','long','unsigned','signed',]
 
 ##### Lista de Token para Símbolo de Atribuição #######
 simb_atribuicao = ['=']
@@ -50,8 +50,8 @@ digitos = ['0','1','2','3','4','5','6','7','8','9']
 ##### Lista de Tokens para o tipo palavras Reservadas #######
 PalavrasReservadas = ['auto','break', 'case', 'const', 'continue', 'default', 
 			'enum', 'extern', 'goto','define','struct',
-			  'register', 'return', 'signed', 'sizeof', 'static','include','main'
-			'struct', 'typedef', 'union', 'void', 'volatile']
+			  'register', 'return', 'sizeof', 'static','include','main'
+			'typedef', 'union', 'void', 'volatile']
 
 ##### Lista de Tokens para Delimitadores ########
 delimitadores = [' ', '	', '.', ',', '\n', ';', '(', ')', '<', '>', '{', '}', '[', ']']
