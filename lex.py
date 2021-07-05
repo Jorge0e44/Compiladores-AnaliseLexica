@@ -128,7 +128,6 @@ for i in text:
 	elif isWord:
 		token = token+i
 
-os.system("PAUSE")
 for token in tokens:
     #VERIFICA SE O CONTEUDO DE TOKEN ESTÁ CONTIDO DENTRO DAS DEFINIÇÕES DA LISTA DE SIMBOLOS
 	#SE ESTIVER CONTIDO, FAZ UMA INCLUSÃO NA LISTA DE SIMBOLOS
