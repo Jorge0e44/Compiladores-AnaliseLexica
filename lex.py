@@ -15,7 +15,7 @@ text = f.read()
 ######################################		DEFINIÇÃO DAS CLASSES DE TOKENS		#################################
 
 ##### Lista de Tokens para definição de Simbolos especiais #######
-simbolos = ['#', '$', '&', '^']
+simbolos = ['#', '$', '&']
 
 ##### Lista de Tokens para definição de Caracteres inválidos #######
 caracteres_invalidos = ['@','ç','º','£']
@@ -30,7 +30,7 @@ operadores_logicos = ['&&','||','!','^'] # AND OR NOT XOR
 operadores_aritmeticos=['+','-','*','/','%']
 
 ##### Lista de Tokens para definição de Operadores Relacionais #######
-operadores_relacionais = [ '+=','!=','-=', '==', '<', '>', '<=', '>=']
+operadores_relacionais = [ '+=','!=','-=', '==', '*=', '<', '>', '<=', '>=']
 
 ##### Lista de Tokens para definição de Tipos de Variáveis #######
 tipo_variaveis=['int','float','long','double','short','char','long','unsigned','signed',]
@@ -82,6 +82,9 @@ tokens = []
 isString = False
 isWord = False
 isCmt = 0
+isAritmetico = False
+isLogico = False
+isSimbolo = False
 token = ''
 
 
@@ -103,21 +106,70 @@ for i in text:
 			token = ''
 		isString = not isString
 
+	#VERIFICA SE É UM OPERADOR LOGICO
+	elif isLogico:
+		if(token + i in operadores_logicos):
+			token = token + i
+		tokens.append(token)
+		token = ''
+		isLogico = False
+
+	#VERIFICA SE O CARACTER | FOI LIDO
+	elif (i == '|'):
+		if token:
+			tokens.append(token)
+		token = i
+		isLogico = True
+
+
+	elif isSimbolo:
+		if(token + i in operadores_logicos):
+			token = token + i
+		tokens.append(token)
+		token = ''
+		isSimbolo = False
+
+
 	#FAZ A VERIFICAÇÃO PARA UMA STRING
 	elif isString:
 		token = token+i
 
     #FAZ A VERIFICAÇÃO PARA UMA SIMBOLO
 	elif i in simbolos:
-		tokens.append(i)
+		if token:
+			tokens.append(token)
+		token = i
+		isSimbolo = True
+
 
 	#FAZ A VERIFICAÇÃO PARA UMA PALAVRA       
 	elif i.isalnum() and not isWord:
 		isWord = True
 		token = i
-    
+
+	#VERIFICA SE É UM OPERADOR RELACIONAL
+	elif isAritmetico or (token == '!'):
+		if (token + i in operadores_relacionais):
+			token = token + i
+		tokens.append(token)
+		token = ''
+		isAritmetico = False
+
+	#VERIFICA SE O CARACTER ! FOI LIDO
+	elif(i == '!'):
+		if token:
+			tokens.append(token)
+		token = i
+
+	#VERIFICA SE É UM OPERADOR ARITMETICO
+	elif (i in operadores_aritmeticos):
+		if token:
+			tokens.append(token)
+		token = i
+		isAritmetico = True
+
 	#FAZ UMA SÉRIE DE COMPARAÇÕES PARA VERIFICAR ALGUNS TIPOS DE CLASSE DE TOKENS A FIM COLOCAR ESSES TIPOS EM UMA LISTA
-	elif (i in delimitadores) or (i in caracteres_invalidos) or (i in operadores_aritmeticos) or (i in operadores_logicos) or (i in operadores_relacionais) or (i in loops) or (i in condicionais) or (i in codigos_formato):
+	elif (i in delimitadores) or (i in caracteres_invalidos) or (i in loops) or (i in condicionais) or (i in codigos_formato):
 		if token:
 			tokens.append(token)
 			token = ''
