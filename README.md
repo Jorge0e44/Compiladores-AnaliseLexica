@@ -25,18 +25,18 @@ TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
 TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
 {<br>
 	<operadores_logicos= "&&" | "||"| "^"|"!">
-}
+}<br>
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação relacional
 {<br>
 	<operadores_relacionais ="+=" | "!=" | "-=" |"==" | "<" | ">" |"<="| ">=">
-}
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem
 {<br>
 	<tipo_variaveis= "int" | "float"| "long"| "double" | "short" | "char" | "unsigned" | "signed" >
-}
+}<br>
 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas
 {<br>
@@ -50,19 +50,19 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
 {<br>
 
 	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
-}
+}<br>
 
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
 	<FOR= "for"> | <DO= "do"> | <IF= "if"> | <ELSE= "else"> |
 	<PTO_VIRG= ";"> | <VIRGULA= ","> | <UNDERLINE= "_">
 	| <DOIS_PTOS= ":">
 
-}
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C
 {
 	<ATRIBUICAO= "=">
-}
+}<br>
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9
