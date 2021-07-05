@@ -30,7 +30,7 @@ TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação relacional
 {<br>
-	<operadores_relacionais ="+=" | "!=" | "-=" |"==" | "<" | ">" |"<="| ">=">
+	<operadores_relacionais ="+="| "*=" |"!=" | "-=" |"==" | "<" |">" |"<="| ">=">
 }<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem
@@ -52,6 +52,8 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
 	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
 }<br>
 
+TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores
+{<br>
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
 	<FOR= "for"> | <DO= "do"> | <IF= "if"> | <ELSE= "else"> |
 	<PTO_VIRG= ";"> | <VIRGULA= ","> | <UNDERLINE= "_">
