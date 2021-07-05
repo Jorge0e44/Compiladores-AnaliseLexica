@@ -4,8 +4,8 @@
 <p>Prof. Newton Spolaôr</p></b>
 
 <b>Software   : Almost a compiler</b>
-<p><i>Integrantes: </p><p>Jorge Augusto S. Freitas
-	     	Giuliano Augusto </i></p>
+<p><i>Integrantes:Jorge Augusto S. Freitas</p>
+	     	<p>Giuliano Augusto </i></p>
  
 <b>Descrição  : A linguagem X é um subconjunto da linguagem C
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
