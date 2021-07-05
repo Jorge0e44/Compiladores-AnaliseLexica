@@ -49,7 +49,7 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reser
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
 {
 
-	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&"> | <TIL ="^">	
+	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
 }
 
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
