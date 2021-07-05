@@ -15,6 +15,10 @@
 ***************************************      EXPRESSÕES REGULARES     ***************************************
 *************************************************************************************************************
 
+*************************************************************************************************************
+***************************************      EXPRESSÕES REGULARES     ***************************************
+*************************************************************************************************************
+
 TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica
 {
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
@@ -39,9 +43,11 @@ TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas
 {
 	<STRUCT = "struct"> | <AUTO= "auto"> | <BREAK = "break"> | <CASE = "case"> | <CONST = "const">| 
-	<CONTINUE = "continue"> | <"DEFAULT = "default"> | <"ENUM ="enum" | <"EXTERN = "extern" | <"GOTO" ="goto"> | <"DEFINE = "define"> | <"REGISTER = "register">| <"RETURN = "return"> | <"SIZEOF = "sizeof">| <"STATIC = "static"> | <"INCLUDE = "include"> | <"MAIN = "main"> | <"TYPEDEF = "typedef"> | <"UNION = "union"> | <"VOID = "void"> | <"VOLATILE = "volatile">  
+	<CONTINUE = "continue"> | <DEFAULT = "default"> | <ENUM ="enum" | <EXTERN = "extern" | <GOTO="goto"> | <DEFINE = "define"> | <REGISTER = "register">| <RETURN = "return"> | <SIZEOF = "sizeof">| <STATIC = "static"> | <INCLUDE = "include"> | <MAIN = "main"> | <TYPEDEF = "typedef"> | <UNION = "union"> | <VOID = "void"> | <VOLATILE = "volatile">  
 
 }
+
+
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
 {
 
@@ -73,6 +79,7 @@ TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identific
 
 }
  
+
 *************************************************************************************************************
 ***************************************   DESCRIÇÃO DO FUNCIONAMENTO  ***************************************
 *************************************************************************************************************
@@ -87,10 +94,6 @@ python lex.py
 // se tudo ocorreu bem ele executa direto o programa
 // Será solicitado ao usuário que digite o nome do arquivo a ser analisado
 // É apresentado para o usuário os resultados
-
-
-
-
 
 
 
