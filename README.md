@@ -11,35 +11,35 @@
  
 <b>Descrição  : A linguagem X é um subconjunto da linguagem C
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
-				operadores aritméticos, operadores relacionais, tipo de variáveis, 				simbolos de atribuição, Loops, Estruturas condicionais, dígitos, 				Palavras Reservadas, delimitadores
+				operadores aritméticos, operadores relacionais, tipo de variáveis, simbolos de atribuição, Loops, Estruturas condicionais, dígitos, 				Palavras Reservadas, delimitadores </B>
 
 *************************************************************************************************************
 ***************************************      EXPRESSÕES REGULARES     ***************************************
 *************************************************************************************************************
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica
+TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
 {
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
 } 
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
-{
+{<br>
 	<operadores_logicos= "&&" | "||"| "^"|"!">
-}
+}<br>
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação relacional
-{
-	<operadores_relacionais ="+=" | "!=" | "-=" |"==" | "<" | ">" |"<="| ">=">
-}
+{<br>
+	<operadores_relacionais ="+="| "*=" |"!=" | "-=" |"==" | "<" |">" |"<="| ">=">
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem
-{
+{<br>
 	<tipo_variaveis= "int" | "float"| "long"| "double" | "short" | "char" | "unsigned" | "signed" >
-}
+}<br>
 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas
-{
+{<br>
 	<STRUCT = "struct"> | <AUTO= "auto"> | <BREAK = "break"> | <CASE = "case"> | <CONST = "const">| 
 	<CONTINUE = "continue"> | <DEFAULT = "default"> | <ENUM ="enum" | <EXTERN = "extern" | <GOTO="goto"> | <DEFINE = "define"> | <REGISTER = "register">| <RETURN = "return"> | <SIZEOF = "sizeof">| <STATIC = "static"> | <INCLUDE = "include"> | <MAIN = "main"> | <TYPEDEF = "typedef"> | <UNION = "union"> | <VOID = "void"> | <VOLATILE = "volatile">  
 
@@ -47,22 +47,24 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reser
 
 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
-{
+{<br>
 
-	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&"> | <TIL ="^">	
-}
+	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
+}<br>
 
+TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores
+{<br>
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
 	<FOR= "for"> | <DO= "do"> | <IF= "if"> | <ELSE= "else"> |
 	<PTO_VIRG= ";"> | <VIRGULA= ","> | <UNDERLINE= "_">
 	| <DOIS_PTOS= ":">
 
-}
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C
 {
 	<ATRIBUICAO= "=">
-}
+}<br>
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9
