@@ -1,7 +1,24 @@
-#include <stdio.h>
-int main(){
-	int __1a1_1a = 0;
-	int 123a;
-	printf("%d\n",_1a1_1a);
-	return 0;
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+int main(void)
+{
+  //Declaração das variáveis
+  float nota1, nota2, media;
+  @ £
+  //Entrada de dados
+  printf("Digite a primeira nota do aluno: ");
+  scanf("%f",&nota1);
+
+  printf("Digite a segunda nota do aluno: ");
+  scanf("%f",&nota2);
+
+  //Processamento
+  media += (nota1 + nota2) * 20;
+
+  //Saída
+  printf("Media do aluno = %.1f\n",media);
+
+  system("pause");//pausa da tela somente para Windows
+  return 0;//retorno da função main
 }
