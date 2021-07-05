@@ -20,7 +20,7 @@
 TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
 {<br>
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
-} </br>
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
 {<br>
