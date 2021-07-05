@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 #define MAX 10
 int main(void)
 {
@@ -14,7 +13,7 @@ int main(void)
   scanf("%f",&nota2);
 
   //Processamento
-  media != (nota1 || nota2) * 20;
+  media *= (nota1 || nota2) * 20;
 
   //Saída
   printf("Media do aluno = %.1f\n",media);

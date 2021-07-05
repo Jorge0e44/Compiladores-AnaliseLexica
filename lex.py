@@ -73,14 +73,14 @@ in_delimitadores = []
 in_identificadores = []
 in_entremaiormenor = []
 in_comentarios = []
-in_constantes = []
+in_erro = []
 in_codigos_formato = []
 in_codigos_estruturas = []
 in_caracteres_invalidos = []
 
 tokens = []
 isString = False
-isWord = False
+isWord = True
 isCmt = 0
 isAritmetico = False
 isLogico = False
@@ -111,7 +111,7 @@ for i in text:
 		if(token + i in operadores_logicos):
 			token = token + i
 		tokens.append(token)
-		token = ''
+		token = i
 		isLogico = False
 
 	#VERIFICA SE O CARACTER | FOI LIDO
@@ -121,14 +121,13 @@ for i in text:
 		token = i
 		isLogico = True
 
-
+	#VERIFICA SE && FOI LIDO
 	elif isSimbolo:
 		if(token + i in operadores_logicos):
 			token = token + i
 		tokens.append(token)
-		token = ''
+		token = i
 		isSimbolo = False
-
 
 	#FAZ A VERIFICAÇÃO PARA UMA STRING
 	elif isString:
@@ -141,18 +140,12 @@ for i in text:
 		token = i
 		isSimbolo = True
 
-
-	#FAZ A VERIFICAÇÃO PARA UMA PALAVRA       
-	elif i.isalnum() and not isWord:
-		isWord = True
-		token = i
-
 	#VERIFICA SE É UM OPERADOR RELACIONAL
 	elif isAritmetico or (token == '!'):
 		if (token + i in operadores_relacionais):
 			token = token + i
 		tokens.append(token)
-		token = ''
+		token = i
 		isAritmetico = False
 
 	#VERIFICA SE O CARACTER ! FOI LIDO
@@ -174,7 +167,7 @@ for i in text:
 			tokens.append(token)
 			token = ''
         
-		if not (i==' ' or i=='\n' or i=='	'):
+		if not (i==' ' or i=='\n'):
 			tokens.append(i)
 
 	elif isWord:
@@ -270,7 +263,7 @@ for token in tokens:
 
 	#SE NÃO CORRESPONDER A NENHUMA DAS OUTRAS DEFINIÇÕES ANTERIORES, FAZ UMA INCLUSÃO NA LISTA DE CONSTANTES
 	else:
-		in_constantes.append(token)
+		in_erro.append(token)
 	
 
 #############	APRESENTA NA TELA OS RESULTADOS COM O TIPO DE TOKEN ENCONTRADO E A QUANTIDADE	############################				
@@ -315,8 +308,8 @@ print(in_digitos);
 print("\nNUMERO DE IDENTIFICADROES = ",len(in_identificadores))
 print(in_identificadores);
 
-print("\nNUMERO DE CONSTANTES = ",len(in_constantes))
-print(in_constantes);
+print("\nNUMERO DE ERROS = ",len(in_erro))
+print(in_erro);
 
 print("\nNUMERO DE DELIMITADORES = ",len(in_delimitadores))
 print(in_delimitadores);
