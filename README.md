@@ -16,29 +16,30 @@
 *************************************************************************************************************
 ***************************************      EXPRESSÕES REGULARES     ***************************************
 *************************************************************************************************************
-
 TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
-{
+{<br>
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
-} 
+}<br>
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
+TOKEN: // Expressão regular utilizada pra reconhecer operação lógica <br>
 {<br>
 	<operadores_logicos= "&&" | "||"| "^"|"!">
 }<br>
 
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação relacional
+TOKEN: // Expressão regular utilizada pra reconhecer operação relacional <br>
 {<br>
 	<operadores_relacionais ="+="| "*=" |"!=" | "-=" |"==" | "<" |">" |"<="| ">=">
 }<br>
 
-TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem
+		
+TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem <br>
 {<br>
 	<tipo_variaveis= "int" | "float"| "long"| "double" | "short" | "char" | "unsigned" | "signed" >
 }<br>
 
-TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas
+		
+TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas <br>
 {<br>
 	<STRUCT = "struct"> | <AUTO= "auto"> | <BREAK = "break"> | <CASE = "case"> | <CONST = "const">| 
 	<CONTINUE = "continue"> | <DEFAULT = "default"> | <ENUM ="enum" | <EXTERN = "extern" | <GOTO="goto"> | <DEFINE = "define"> | <REGISTER = "register">| <RETURN = "return"> | <SIZEOF = "sizeof">| <STATIC = "static"> | <INCLUDE = "include"> | <MAIN = "main"> | <TYPEDEF = "typedef"> | <UNION = "union"> | <VOID = "void"> | <VOLATILE = "volatile">  
@@ -46,13 +47,14 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reser
 }
 
 
-TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
+TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos <br>
 {<br>
 
 	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
 }<br>
 
-TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores
+		
+TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores <br>
 {<br>
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
 	<FOR= "for"> | <DO= "do"> | <IF= "if"> | <ELSE= "else"> |
@@ -61,23 +63,25 @@ TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores
 
 }<br>
 
-TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C
-{
+		
+TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C <br>
+{<br>
 	<ATRIBUICAO= "=">
 }<br>
 
 
-TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9
-{
+TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9 <br>
+{<br>
 	<DIGITOS= (["0"-"9"])>
-}
+}<br>
 
-TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identificadores
-{
+		
+TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identificadores <br>
+{<br>
 	<LETRA = ("a..z" | "A..Z")>
 	<IDENTIFICADOR= (<UNDERLINE>)(<LETRA>|<DIGITOS|<UNDERLINE>)*| (<LETRA>)(<LETRA>|<DIGITOS> <UNDERLINE>)*>
 
-}
+}<br>
  
 
 *************************************************************************************************************
