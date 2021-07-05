@@ -62,22 +62,22 @@ TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores
 }<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C
-{
+{<br>
 	<ATRIBUICAO= "=">
 }<br>
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9
-{
+{<br>
 	<DIGITOS= (["0"-"9"])>
-}
+}<br>
 
 TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identificadores
-{
+{<br>
 	<LETRA = ("a..z" | "A..Z")>
 	<IDENTIFICADOR= (<UNDERLINE>)(<LETRA>|<DIGITOS|<UNDERLINE>)*| (<LETRA>)(<LETRA>|<DIGITOS> <UNDERLINE>)*>
 
-}
+}<br>
  
 
 *************************************************************************************************************
