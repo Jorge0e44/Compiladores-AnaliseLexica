@@ -6,7 +6,7 @@
 <b>Software   : Almost a compiler</b>
 
 <i>Integrantes:
-	Jorge Augusto S. Freitas
+	Jorge Augusto S. Freitas <br>
 	Giuliano Augusto </i>
  
 <b>Descrição  : A linguagem X é um subconjunto da linguagem C
