@@ -4,7 +4,8 @@
 <p>Prof. Newton Spolaôr</p></b>
 
 <b>Software   : Almost a compiler</b>
-<p><i>Integrantes:</p>
+
+<i>Integrantes:
 	Jorge Augusto S. Freitas
 	Giuliano Augusto </i>
  
