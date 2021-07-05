@@ -7,7 +7,7 @@
 
 <i>Integrantes:
 	Jorge Augusto S. Freitas <br>
-	<p>Giuliano Augusto </p></i>
+	Giuliano Augusto </i>
  
 <b>Descrição  : A linguagem X é um subconjunto da linguagem C
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
