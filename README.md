@@ -22,24 +22,24 @@ TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
 } 
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação lógica <BR>
-{
+TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
+{<br>
 	<operadores_logicos= "&&" | "||"| "^"|"!">
 }
 
 
 TOKEN: // Expressão regular utilizada pra reconhecer operação relacional
-{
+{<br>
 	<operadores_relacionais ="+=" | "!=" | "-=" |"==" | "<" | ">" |"<="| ">=">
 }
 
 TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem
-{
+{<br>
 	<tipo_variaveis= "int" | "float"| "long"| "double" | "short" | "char" | "unsigned" | "signed" >
 }
 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas
-{
+{<br>
 	<STRUCT = "struct"> | <AUTO= "auto"> | <BREAK = "break"> | <CASE = "case"> | <CONST = "const">| 
 	<CONTINUE = "continue"> | <DEFAULT = "default"> | <ENUM ="enum" | <EXTERN = "extern" | <GOTO="goto"> | <DEFINE = "define"> | <REGISTER = "register">| <RETURN = "return"> | <SIZEOF = "sizeof">| <STATIC = "static"> | <INCLUDE = "include"> | <MAIN = "main"> | <TYPEDEF = "typedef"> | <UNION = "union"> | <VOID = "void"> | <VOLATILE = "volatile">  
 
@@ -47,7 +47,7 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reser
 
 
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos
-{
+{<br>
 
 	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
 }
