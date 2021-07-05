@@ -17,12 +17,12 @@
 ***************************************      EXPRESSÕES REGULARES     ***************************************
 *************************************************************************************************************
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica
+TOKEN: // Expressão regular utilizada pra reconhecer operação aritmetica <BR>
 {
 		<operadores_aritmeticos= "+" | "-" | "*" | "/" | "%">
 } 
 
-TOKEN: // Expressão regular utilizada pra reconhecer operação lógica
+TOKEN: // Expressão regular utilizada pra reconhecer operação lógica <BR>
 {
 	<operadores_logicos= "&&" | "||"| "^"|"!">
 }
