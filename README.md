@@ -32,11 +32,13 @@ TOKEN: // Expressão regular utilizada pra reconhecer operação relacional <br>
 	<operadores_relacionais ="+="| "*=" |"!=" | "-=" |"==" | "<" |">" |"<="| ">=">
 }<br>
 
+		
 TOKEN: // Expressão regular utilizada pra reconhecer os tipos de variáveis da nossa linguagem <br>
 {<br>
 	<tipo_variaveis= "int" | "float"| "long"| "double" | "short" | "char" | "unsigned" | "signed" >
 }<br>
 
+		
 TOKEN: // Aqui são várias expressões utilizadas pra reconhecer palavras reservadas <br>
 {<br>
 	<STRUCT = "struct"> | <AUTO= "auto"> | <BREAK = "break"> | <CASE = "case"> | <CONST = "const">| 
@@ -51,6 +53,7 @@ TOKEN: // Aqui são várias expressões utilizadas pra reconhecer simbolos <br>
 	<CERQUILHA = "#"> | <CIFRAO ="$"> | <AMPERSAND = "&">">	
 }<br>
 
+		
 TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores <br>
 {<br>
 <ABRE_PAREN = "("> | <FECHA_PAREN= ")"> |<WHILE= "while"> | 
@@ -60,6 +63,7 @@ TOKEN: // Expressoões para reconhecer operadores de loop e delimitadores <br>
 
 }<br>
 
+		
 TOKEN: // Expressão regular utilizada pra reconhecer o comando de atribuição em C <br>
 {<br>
 	<ATRIBUICAO= "=">
@@ -71,6 +75,7 @@ TOKEN: // Expressão regular utilizada pra reconhecer os digitos de 0 a 9 <br>
 	<DIGITOS= (["0"-"9"])>
 }<br>
 
+		
 TOKEN: // Expressão regular utilizada pra reconhecer a nomeação dos identificadores <br>
 {<br>
 	<LETRA = ("a..z" | "A..Z")>
