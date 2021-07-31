@@ -4,7 +4,6 @@ int main(void)
 {
   //Declaração das variáveis
   float nota1, nota2, media;
-  @ £
   //Entrada de dados
   printf("Digite a primeira nota do aluno: ");
   scanf("%f",&nota1);

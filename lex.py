@@ -80,11 +80,12 @@ in_caracteres_invalidos = []
 
 tokens = []
 isString = False
-isWord = False
+isWord = True
 isCmt = 0
 isAritmetico = False
 isLogico = False
 isSimbolo = False
+isDigito = False
 token = ''
 
 
@@ -169,15 +170,22 @@ for i in text:
         
 		if not (i==' ' or i=='\n'):
 			tokens.append(i)
+	
+	elif (i in digitos):
+		if token:
+			tokens.append(token)
+		token = i;
+		isDigito = True; 
 
 	elif isWord:
 		token = token+i
+
 	
-	elif i.isalnum():
-		if(token.isVariavel()):
-			token = token + i
-		else:
-			tokens.append(token)
+	##elif i.isalnum():
+	##	if(token.isVariavel()):
+	##		token = token + i
+	##	else:
+	##		tokens.append(token)
 
 for token in tokens:
     #VERIFICA SE O CONTEUDO DE TOKEN ESTÁ CONTIDO DENTRO DAS DEFINIÇÕES DA LISTA DE SIMBOLOS
