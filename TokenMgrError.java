@@ -99,7 +99,7 @@ public class TokenMgrError extends Error
    * Nota: Você pode personalizar a mensagem de erro lexical modificando este método.
    */
   protected static String LexicalError(boolean EOFSeen, int lexState, int errorLine, int errorColumn, String errorAfter, char curChar) {
-    return("Erro léxico na linha" +
+    return("Erro lexico na linha" +
           errorLine + ", coluna" +
           errorColumn + ".  Encontrado: " +
           (EOFSeen ? "<EOF> " : ("\"" + addEscapes(String.valueOf(curChar)) + "\"") + " (" + (int)curChar + "), ") +
