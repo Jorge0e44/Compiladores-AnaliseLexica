@@ -9,7 +9,7 @@
 	Jorge Augusto S. Freitas <br>
 	Giuliano Augusto </i>
  
-<b>Descrição  : A linguagem X é um subconjunto da linguagem C
+<b>Descrição  : A linguagem X é um subconjunto da linguagem Pascal
 			 inclui : símbolos, caracteres inválidos, códigos de formato, operadores lógicos
 				operadores aritméticos, operadores relacionais, tipo de variáveis, simbolos de atribuição, Loops, Estruturas condicionais, dígitos, 				Palavras Reservadas, delimitadores </B>
 
