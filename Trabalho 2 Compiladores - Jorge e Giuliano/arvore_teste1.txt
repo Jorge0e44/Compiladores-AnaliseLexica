@@ -1,0 +1,44 @@
+Tokens: 
+PROGRAM -> program
+IDENTIFIER -> Soma
+SEMICOLON -> ;
+VAR -> var
+IDENTIFIER -> x
+COMMA -> ,
+IDENTIFIER -> y
+COLON -> :
+TYPE -> integer
+SEMICOLON -> ;
+IDENTIFIER -> maior_x_y
+COLON -> :
+TYPE -> integer
+SEMICOLON -> ;
+BEGIN -> begin
+END_PERIOD -> end.
+
+Arvore Sintatica: 
+   INICIO
+   |   CABECALHO DO PROGRAMA
+   |   |   TOKEN PROGRAMA ['program']
+   |   |   TOKEN IDENTIFICADOR ['Soma']
+   |   |   TOKEN PONTOEVIRGULA [';']
+   |   CABECALHO
+   |   |   DECLARACAO
+   |   |   |   TOKEN VARIAVEL ['var']
+   |   |   |   DECLARACOES DE VARIAVEIS
+   |   |   |   |   GRUPO DE VARIAVEIS
+   |   |   |   |   |   TOKEN IDENTIFICADOR ['x']
+   |   |   |   |   |   TOKEN VIRGULA [',']
+   |   |   |   |   |   TOKEN IDENTIFICADOR ['y']
+   |   |   |   |   TOKEN DOIS PONTOS [':']
+   |   |   |   |   TOKEN TIPO ['integer']
+   |   |   |   TOKEN PONTOEVIRGULA [';']
+   |   |   |   DECLARACOES DE VARIAVEIS
+   |   |   |   |   GRUPO DE VARIAVEIS
+   |   |   |   |   |   TOKEN IDENTIFICADOR ['maior_x_y']
+   |   |   |   |   TOKEN DOIS PONTOS [':']
+   |   |   |   |   TOKEN TIPO ['integer']
+   |   |   |   TOKEN PONTOEVIRGULA [';']
+   |   TOKEN BEGIN ['begin']
+   |   TOKEN END PONTO ['end.']
+Analise com sucesso !! Analise Lexica e sintatica sem erros

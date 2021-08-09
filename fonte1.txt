@@ -1,0 +1,11 @@
+program Soma;
+var
+    x, y :integer;
+    maior_x_y: integer;
+
+begin
+
+end.
+
+
+

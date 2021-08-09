@@ -1,0 +1,33 @@
+program Soma;
+
+function soma (a, b :integer) :integer;
+var
+    x: integer;
+    y:integer;
+    $;
+begin
+    c := a + b;
+    
+    soma := c;
+end;
+
+function maior (a, b :integer) :string; 
+var
+    s: string;
+begin
+    if (a > b) then begin
+        s := 'Parametro 1 maior que parametro 2';
+    end
+    else begin
+        s := 'Parametro 2 maior que parametro 1';
+    end;
+    
+    maior := s;
+end;
+
+var
+    x, y :integer;
+
+begin
+ 
+end.

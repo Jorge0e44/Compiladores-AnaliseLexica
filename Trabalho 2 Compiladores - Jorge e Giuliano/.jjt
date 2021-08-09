@@ -1,0 +1,55 @@
+Java Compiler Compiler Version 5.0 (Tree Builder)
+
+Usage:
+    jjtree option-settings inputfile
+
+"option-settings" is a sequence of settings separated by spaces.
+Each option setting must be of one of the following forms:
+
+    -optionname=value (e.g., -STATIC=false)
+    -optionname:value (e.g., -STATIC:false)
+    -optionname       (equivalent to -optionname=true.  e.g., -STATIC)
+    -NOoptionname     (equivalent to -optionname=false. e.g., -NOSTATIC)
+
+Option settings are not case-sensitive, so one can say "-nOsTaTiC" instead
+of "-NOSTATIC".  Option values must be appropriate for the corresponding
+option, and must be either an integer or a string value.
+
+The boolean valued options are:
+
+    STATIC                   (default true)
+    MULTI                    (default false)
+    NODE_DEFAULT_VOID        (default false)
+    NODE_SCOPE_HOOK          (default false)
+    NODE_USES_PARSER         (default false)
+    BUILD_NODE_FILES         (default true)
+    TRACK_TOKENS             (default false)
+    VISITOR                  (default false)
+
+The string valued options are:
+
+    JDK_VERSION              (default "1.5")
+    NODE_CLASS               (default "")
+    NODE_PREFIX              (default "AST")
+    NODE_PACKAGE             (default "")
+    NODE_EXTENDS             (default "")
+    NODE_FACTORY             (default "")
+    OUTPUT_FILE              (default remove input file suffix, add .jj)
+    OUTPUT_DIRECTORY         (default "")
+    JJTREE_OUTPUT_DIRECTORY  (default value of OUTPUT_DIRECTORY option)
+    VISITOR_DATA_TYPE        (default "")
+    VISITOR_RETURN_TYPE      (default "Object")
+    VISITOR_EXCEPTION        (default "")
+
+JJTree also accepts JavaCC options, which it inserts into the generated file.
+
+EXAMPLES:
+    jjtree -STATIC=false mygrammar.jjt
+
+ABOUT JJTree:
+    JJTree is a preprocessor for JavaCC that inserts actions into a
+    JavaCC grammar to build parse trees for the input.
+
+    For more information, see the online JJTree documentation at 
+    https://javacc.dev.java.net/doc/JJTree.html 
+

@@ -1,0 +1,464 @@
+
+options {
+	JAVA_UNICODE_ESCAPE = true;
+	IGNORE_CASE = true;
+ 	STATIC = false;
+}
+
+PARSER_BEGIN(MyPascal)
+class MyPascal {
+	public static void main(String[] args) throws ParseException {
+
+		try{
+			
+			MyPascal parser = new  MyPascal(System.in);
+
+			//Chamada para o primeiro método, início da análise
+			System.out.println("Tokens: ");
+			SimpleNode root = parser.start();
+			System.out.println("");
+
+			//Imprime a árvore
+			System.out.println("Árvore: ");
+  	  		root.dump("   ");
+
+  	  		System.out.println("Analise com sucesso lexica e sintatica com sucesso");
+  	  		
+
+		} catch (ParseException e){
+			System.out.println("Erro encontrado na analise sintatica");
+			System.out.println(e.getMessage());
+		} catch (TokenMgrError m){
+			System.out.println("Erro encontrado na analise lexica");
+			System.out.println(m.getMessage());
+		}
+	}
+}
+PARSER_END(MyPascal)
+
+
+/*
+ * Ignora espaços, tabulações e quebras de linha
+ */
+
+SKIP: {
+	" " | "\t" | "\n" | "\r" | "\f"
+}
+
+
+/*
+ * DEFINICAO DOS TOKENS *
+ */
+
+// Operadores aritméticos
+TOKEN: {
+	<ARITHMETIC_OPERATOR: "+" | "-" | "*" | "/" > {
+		System.out.println("ARITHMETIC_OPERATOR -> " + image);
+	}
+}
+
+// Operadores lógicos
+TOKEN: {
+	<LOGIC_OPERATOR_NOT: "not" >{
+		System.out.println("LOGIC_OPERATOR_NOT -> " + image);
+	} |
+
+	<LOGIC_OPERATOR: "and" | "or" > {
+		System.out.println("LOGIC_OPERATOR -> " + image);
+	}
+}
+
+// Operadores relacionais
+TOKEN: {
+	// #TOKENS are 'private' tokens, just for internal usage
+	<#EQUAL: "=" > |
+	<#GREATER: ">" > | 
+	<#LESSER: "<" > |
+
+	<RELATIONAL_OPERATOR: "<=" | <LESSER> | <GREATER> | ">=" | <EQUAL> | "<>" > {
+		System.out.println("RELATIONAL_OPERATOR -> " + image);
+	}
+}
+
+// Separadores
+TOKEN: {
+	<L_BRACKET: "(" > {
+		System.out.println("L_BRACKET -> " + image);
+	} | 
+
+	<R_BRACKET: ")" > {
+		System.out.println("R_BRACKET -> " + image);
+	}
+}
+
+// Pontuações
+TOKEN: {
+	<SEMICOLON: ";" > {
+		System.out.println("SEMICOLON -> " + image);
+	} | 
+
+	<COMMA: "," > {
+		System.out.println("COMMA -> " + image);
+	} | 
+
+	<PERIOD: "." > {
+		System.out.println("PERIOD -> " + image);
+	} |
+
+	<COLON: ":" > {
+		System.out.println("COLON -> " + image);
+	}
+}
+
+// Palavras reservadas
+TOKEN: {
+	<BEGIN: "begin" > {
+		System.out.println("BEGIN -> " + image);
+	} | 
+
+	<END: "end" > {
+		System.out.println("END -> " + image);
+	} | 
+
+	<WHILE: "while" > {
+		System.out.println("WHILE -> " + image);
+	} | 
+
+	<FOR: "for" > {
+		System.out.println("FOR -> " + image);
+	} | 
+
+	<TO: "to" > {
+		System.out.println("TO -> " + image);
+	} | 
+
+	<DO: "do" > {
+		System.out.println("DO -> " + image);
+	} | 
+
+	<IF: "if" > {
+		System.out.println("IF -> " + image);
+	} | 
+
+	<ELSE: "else" > {
+		System.out.println("ELSE -> " + image);
+	} | 
+
+	<THEN: "then" > {
+		System.out.println("THEN -> " + image);
+	} | 
+
+	<VAR: "var" > {
+		System.out.println("VAR -> " + image);
+	} |
+
+	<PROGRAM: "program" > {
+		System.out.println("PROGRAM -> " + image);
+	} | 
+
+	<FUNCTION: "function" > {
+		System.out.println("FUNCTION -> " + image);
+	}
+}
+
+// Fim programa, functions, condições, etc
+TOKEN:{
+	<END_PERIOD: (<END><PERIOD>) > {
+		System.out.println("END_PERIOD -> " + image);
+	} | 
+
+	<END_SEMICOLON: (<END><SEMICOLON>) > {
+		System.out.println("END_SEMICOLON -> " + image);
+	}
+}
+
+// Palavras reservadas - Tipos de dados
+TOKEN: {
+	<TYPE: "integer" | "real" | "char" | "bool" | "string" > {
+		System.out.println("TYPE -> " + image);
+	}
+}
+
+// Tipos de dados - valores
+TOKEN: {
+	// #TOKENS are 'private' tokens, just for internal usage
+	<#DIGIT: (["0"-"9"]) > |
+	<#LETTER: (["a"-"z","A"-"Z"]) > |
+	<#UNDERLINE: "_" > |
+	<#APOSTROPHE: "'" > |
+	<#OTHER_CHAR: ["$","%","#","@","!","?","&","[","]","{","}"," "] > |
+	<#SPECIAL_CHAR: <UNDERLINE>|<COMMA>|<SEMICOLON>|<PERIOD>|<COLON>|<EQUAL>|<GREATER>|<LESSER>|<ARITHMETIC_OPERATOR>|<OTHER_CHAR>|<L_BRACKET>|<R_BRACKET> > |
+
+	<BOOL: "true" | "false" > {
+		System.out.println("BOOL -> " + image);
+	} | 
+
+	<NUMBER: (<DIGIT>)+ > {
+		System.out.println("NUMBER -> " + image);
+	} |
+
+	<REAL_NUMBER: (<DIGIT>)+<PERIOD>(<DIGIT>)+ > {
+		System.out.println("REAL_NUMBER -> " + image);
+	} |
+
+	<STRING: <APOSTROPHE> (<LETTER> | <DIGIT> | <SPECIAL_CHAR>)* <APOSTROPHE> > {
+		System.out.println("STRING -> " + image);
+	}
+}
+
+// Atribuição
+TOKEN: {
+	<ASSIGNMENT: (<COLON><EQUAL>) > {
+		System.out.println("ASSIGNMENT -> " + image);
+	}
+}
+
+// Identificador
+TOKEN: {
+	<IDENTIFIER: (<UNDERLINE>)*(<LETTER>)+(<DIGIT>|<UNDERLINE>|<LETTER>)* > {
+		System.out.println("IDENTIFIER -> " + image);
+	}
+}
+
+
+/*
+ * Funções para Analise sintatica
+ */
+
+// Programa completo composto de cabeçalho do programa, declarações de variaveis e funções, e função principal
+SimpleNode start() #START : {} {
+	program_header() header() token_begin() (instruction())* token_end_period()<EOF> {return jjtThis;}
+
+}
+
+// Cabeçalho do programa.
+// Ex.: program Somador;
+void program_header() #PROGRAM_HEADER : {} {
+	token_program()token_identifier()token_semicolon()
+}
+
+// Conjunto de variaveis (para auxiliar na declaração).
+// Ex.: a | a,b | a,b,c
+void var_group() #VAR_GROUP : {} {
+	token_identifier()(token_comma()token_identifier())*
+}
+
+
+// Declaração de uma variavel ou um grupo de variaveis e seu tipo.
+// Ex.: a, b :integer;
+void var_group_type() #DEC_VAR : {} {
+	var_group()token_colon()token_type()
+}
+
+// Area de declaração de variavel, declaração de variaveis precedido pela palavra reservada "var"
+// Ex.: var a, b: integer;
+//          c: string;
+//
+//      var d: real;
+void var_declaration() #DECLARATION : {} {
+	(token_var()(var_group_type()token_semicolon())+)
+}
+
+// Operação aritmetica
+// Ex.: a + b | 1 + 2 | (a * b) | a - 4 | a + b + c | (1 + b / 2) | (1 + b) * 3 | a * (2 + 3 + b)
+void arithmetic_operation() #ARITHMETIC_OPERATION : {} {
+	(token_identifier() | token_number() | token_real_number())
+	(token_arithmetic_operator() token_identifier() | token_number() | token_real_number() )*
+}
+
+// Operação relacional
+// Ex.: (a > b) | (2 <= 3) | (b = 2) | (a + b >= 12) | (a = true)
+void relational_operation() #RELATION_OPERATION : {} {
+	(arithmetic_operation() | token_bool()) (token_relational_operator() (arithmetic_operation() | token_bool()))*
+}
+
+// Operação booleana
+// Ex.: true and false | (a > x) or (x > c) | not a | not (a > x)
+void logic_operation() #LOGIC_OPERATION : {} {
+	(token_logic_operator_not())? relational_operation() (token_logic_operator() (token_logic_operator_not())? relational_operation() )*
+}
+
+// Atribuição
+// a := b | a := 3 | a := true | a := 'mensagem' | a := b + c | a := b < c | a := not b | a := a or b | a := soma(b, c)
+void assignment_instruction() #ASSIGNMENT : {} {
+	token_assignment() (logic_operation() | token_string()) token_semicolon()
+}
+
+// Laço de repetição - for
+// Ex.: for i:=0 to (a+c) do begin <uma ou mais instruções> end;
+void loop_for_instruction() #LOOP_FOR : {} {
+	token_for()token_identifier()token_assignment()arithmetic_operation()token_to()arithmetic_operation()token_do()token_begin()(instruction())*token_end_semicolon()
+}
+
+// If - then - else - Instrução condicional
+// Ex.: if((a > b) and c) then begin <uma ou mais instruções> end;
+//      if((a > b) and c) then begin <uma ou mais instruções> end else <uma ou mais instruções> end;
+void if_then_else_instruction() #IF_THEN_ELSE : {} {
+	token_if()token_l_bracket()logic_operation()token_r_bracket()token_then()token_begin()
+	(
+		(instruction())*
+		(token_end() token_else() token_begin() (instruction())* )*
+	)
+	token_end_semicolon()
+}
+
+// Chamada de função
+// Ex.: nome_da_funcao(a, b, c); | nome_da_funcao();
+void function_call() #FUNCTION_CALL : {} {
+	token_l_bracket() (function_params())* token_r_bracket()
+}
+
+//Chamada de 
+void function_params() #FUNCTION_CALL_PARAMS : {} {
+	(token_identifier() | token_number() | token_real_number() | token_string() | token_bool())
+	(token_comma() (token_identifier() | token_number() | token_real_number() | token_string() | token_bool()) )*
+}
+
+// Cabeçalho de uma função
+// Ex.: function somar(a, b: integer):integer;
+//      function concat_int_str(a: integer; s: string): string;
+//      function hello():string;
+void function_header() #FUNCTION_HEADER : {} {
+	token_function()token_identifier()token_l_bracket() (var_group_type()((token_semicolon())var_group_type())*)? token_r_bracket()token_colon()token_type()token_semicolon()
+}
+
+// Função completa com corpo
+void function_block() #FUNCTION : {} {
+	function_header() (var_declaration())* token_begin()
+		(instruction())*
+	token_end_semicolon()
+}
+
+// Instrução. Uma instução pode ser um if/then/else, laço de repetição tipo for, atribuição ou chamada de função
+void instruction() #INSTRUCTION : {} {
+	loop_for_instruction() | if_then_else_instruction() | (token_identifier() (assignment_instruction() | function_call() token_semicolon()) )
+}
+
+// Cabeçalho depois do cabeçalho do programa e antes do programa principal
+// São declaradas as variaveis globais e funções
+void header() #HEADER : {} {
+	(function_block() | var_declaration())*
+}
+
+
+
+
+/*
+ * Funções de chamadas de tokens, e também de atribuição do conteudo dos tokens na arvore gerada
+ */
+
+void token_program() #TOKEN_PROGRAM : {Token t;} {
+	t=<PROGRAM> {jjtThis.value = t.image;}
+}
+
+void token_identifier() #TOKEN_IDENTIFIER : {Token t;} {
+	t=<IDENTIFIER> {jjtThis.value = t.image;}
+}
+
+void token_semicolon() #TOKEN_SEMICOLON : {Token t;} {
+	t=<SEMICOLON> {jjtThis.value = t.image;}
+}
+
+void token_begin() #TOKEN_BEGIN : {Token t;} {
+	t=<BEGIN> {jjtThis.value = t.image;}
+}
+
+void token_end_period() #TOKEN_END_PERIOD : {Token t;} {
+	t=<END_PERIOD> {jjtThis.value = t.image;}
+}
+
+void token_comma() #TOKEN_COMMA : {Token t;} {
+	t=<COMMA> {jjtThis.value = t.image;}
+}
+
+void token_colon() #TOKEN_COLON : {Token t;} {
+	t=<COLON> {jjtThis.value = t.image;}
+}
+
+void token_type() #TOKEN_TYPE : {Token t;} {
+	t=<TYPE> {jjtThis.value = t.image;}
+}
+
+void token_var() #TOKEN_VAR : {Token t;} {
+	t=<VAR> {jjtThis.value = t.image;}
+}
+
+void token_l_bracket() #TOKEN_L_BRACKET : {Token t;} {
+	t=<L_BRACKET> {jjtThis.value = t.image;}
+}
+
+void token_r_bracket() #TOKEN_R_BRACKET : {Token t;} {
+	t=<R_BRACKET> {jjtThis.value = t.image;}
+}
+
+void token_number() #TOKEN_NUMBER : {Token t;} {
+	t=<NUMBER> {jjtThis.value = t.image;}
+}
+
+void token_real_number() #TOKEN_REAL_NUMBER : {Token t;} {
+	t=<REAL_NUMBER> {jjtThis.value = t.image;}
+}
+
+void token_arithmetic_operator() #TOKEN_ARITHMETIC_OPERATOR : {Token t;} {
+	t=<ARITHMETIC_OPERATOR> {jjtThis.value = t.image;}
+}
+
+void token_bool() #TOKEN_BOOL : {Token t;} {
+	t=<BOOL> {jjtThis.value = t.image;}
+}
+
+void token_relational_operator() #TOKEN_RELATIONAL_OPERATOR : {Token t;} {
+	t=<RELATIONAL_OPERATOR> {jjtThis.value = t.image;}
+}
+
+void token_logic_operator_not() #TOKEN_LOGIC_OPERATOR_NOT : {Token t;} {
+	t=<LOGIC_OPERATOR_NOT> {jjtThis.value = t.image;}
+}
+
+void token_logic_operator() #TOKEN_LOGIC_OPERATOR : {Token t;} {
+	t=<LOGIC_OPERATOR> {jjtThis.value = t.image;}
+}
+
+void token_string() #TOKEN_STRING : {Token t;} {
+	t=<STRING> {jjtThis.value = t.image;}
+}
+
+void token_assignment() #TOKEN_ASSIGNMENT : {Token t;} {
+	t=<ASSIGNMENT> {jjtThis.value = t.image;}
+}
+
+void token_for() #TOKEN_FOR : {Token t;} {
+	t=<FOR> {jjtThis.value = t.image;}
+}
+
+void token_to() #TOKEN_TO : {Token t;} {
+	t=<TO> {jjtThis.value = t.image;}
+}
+
+void token_do() #TOKEN_DO : {Token t;} {
+	t=<DO> {jjtThis.value = t.image;}
+}
+
+void token_end_semicolon() #TOKEN_END_SEMICOLON : {Token t;} {
+	t=<END_SEMICOLON> {jjtThis.value = t.image;}
+}
+
+void token_else() #TOKEN_ELSE : {Token t;} {
+	t=<ELSE> {jjtThis.value = t.image;}
+}
+
+void token_if() #TOKEN_IF : {Token t;} {
+	t=<IF> {jjtThis.value = t.image;}
+}
+
+void token_then() #TOKEN_THEN : {Token t;} {
+	t=<THEN> {jjtThis.value = t.image;}
+}
+
+void token_end() #TOKEN_END : {Token t;} {
+	t=<END> {jjtThis.value = t.image;}
+}
+
+void token_function() #TOKEN_FUNCTION : {Token t;} {
+	t=<FUNCTION> {jjtThis.value = t.image;}
+}
