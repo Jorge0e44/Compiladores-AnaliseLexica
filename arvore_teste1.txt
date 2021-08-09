@@ -40,5 +40,5 @@ Arvore de Derivacao:
    |   |   |   |   TOKEN TIPO ['integer']
    |   |   |   TOKEN PONTOEVIRGULA [';']
    |   TOKEN BEGIN ['begin']
-   |   TOKEN END_PERIOD ['end.']
+   |   TOKEN END PONTO ['end.']
 Analise com sucesso !! Analise Lexica e sintatica sem erros

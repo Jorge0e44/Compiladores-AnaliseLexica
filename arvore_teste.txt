@@ -1,0 +1,23 @@
+Tokens: 
+PROGRAM -> program
+IDENTIFIER -> Soma
+SEMICOLON -> ;
+FUNCTION -> function
+IDENTIFIER -> soma
+L_BRACKET -> (
+IDENTIFIER -> a
+COMMA -> ,
+IDENTIFIER -> b
+COLON -> :
+TYPE -> integer
+R_BRACKET -> )
+COLON -> :
+TYPE -> integer
+SEMICOLON -> ;
+VAR -> var
+NUMBER -> 1
+Erro encontrado na analise sintatica
+Encontrado " <NUMBER> "1 "" na linha 5, coluna 5.
+Era esperado:
+    <IDENTIFIER> ...
+    
